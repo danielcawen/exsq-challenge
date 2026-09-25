@@ -1,0 +1,84 @@
+{
+  "edgeCases": [
+    {
+      "id": "emp_age_min",
+      "firstName": "Baby",
+      "lastName": "Record",
+      "age": 1,
+      "email": "baby@edge.com",
+      "salary": 50000,
+      "department": "QA",
+      "note": "Minimum valid age"
+    },
+    {
+      "id": "emp_age_max",
+      "firstName": "Elder",
+      "lastName": "Record",
+      "age": 99,
+      "email": "elder@edge.com",
+      "salary": 50000,
+      "department": "QA",
+      "note": "Maximum valid age"
+    },
+    {
+      "id": "emp_salary_min",
+      "firstName": "Lowest",
+      "lastName": "Pay",
+      "age": 30,
+      "email": "lowest.pay@edge.com",
+      "salary": 1,
+      "department": "Insurance",
+      "note": "Minimum non-zero salary"
+    },
+    {
+      "id": "emp_salary_max",
+      "firstName": "Highest",
+      "lastName": "Pay",
+      "age": 30,
+      "email": "highest.pay@edge.com",
+      "salary": 9999999,
+      "department": "Insurance",
+      "note": "Maximum salary boundary"
+    },
+    {
+      "id": "emp_name_hyphenated",
+      "firstName": "Mary-Jane",
+      "lastName": "Smith-Jones",
+      "age": 30,
+      "email": "mary-jane.smith-jones@edge.com",
+      "salary": 60000,
+      "department": "Legal",
+      "note": "Hyphenated first and last name"
+    },
+    {
+      "id": "emp_name_apostrophe",
+      "firstName": "Connor",
+      "lastName": "O'Brien",
+      "age": 30,
+      "email": "connor.obrien@edge.com",
+      "salary": 60000,
+      "department": "Compliance",
+      "note": "Apostrophe in last name"
+    },
+    {
+      "id": "emp_name_long",
+      "firstName": "Bartholomew",
+      "lastName": "Konstantinopolous",
+      "age": 30,
+      "email": "bartholomew.konstantinopolous@edge.com",
+      "salary": 60000,
+      "department": "Engineering",
+      "note": "Very long first and last name"
+    },
+    {
+      "id": "emp_name_single_char",
+      "firstName": "A",
+      "lastName": "B",
+      "age": 30,
+      "email": "a.b@edge.com",
+      "salary": 60000,
+      "department": "Legal",
+      "note": "Single-character first and last name"
+    }
+  ]
+}

@@ -1,5 +1,39 @@
 {
+  "type": "module",
+  "scripts": {
+    "lint": "npx eslint",
+    "lint:fix": "npx eslint --fix",
+    "format": "npx prettier --write .",
+    "format:check": "npx prettier --check .",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:responsive": "cypress run --spec 'cypress/e2e/responsive/**/*.cy.js' --config 'excludeSpecPattern=[]'",
+    "cy:api": "cypress run --spec 'cypress/e2e/api/**/*.cy.js' --config 'excludeSpecPattern=[]'",
+    "cy:a11y": "cypress run --spec 'cypress/e2e/accessibility/**/*.cy.js' --config 'excludeSpecPattern=[]'",
+    "test": "cypress run",
+    "test:functional": "cypress run",
+    "test:a11y": "cypress run --spec 'cypress/e2e/accessibility/**/*.cy.js' --config 'excludeSpecPattern=[]'",
+    "test:responsive": "cypress run --spec 'cypress/e2e/responsive/**/*.cy.js' --config 'excludeSpecPattern=[]'"
+  },
+  "overrides": {
+    "cypress-axe": {
+      "cypress": "$cypress"
+    }
+  },
   "devDependencies": {
-    "cypress": "^16.1.0"
+    "@eslint/js": "^10.0.1",
+    "@faker-js/faker": "^10.6.0",
+    "axe-core": "^4.13.0",
+    "cypress": "^16.1.0",
+    "cypress-axe": "^1.7.0",
+    "cypress-mochawesome-reporter": "^5.0.0",
+    "dotenv": "^18.0.3",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-cypress": "^3.5.0",
+    "prettier": "^3.9.8"
+  },
+  "dependencies": {
+    "date-fns": "^4.4.0"
   }
 }

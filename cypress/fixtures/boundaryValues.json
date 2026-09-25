@@ -1,0 +1,38 @@
+{
+  "age": {
+    "min": 1,
+    "max": 120,
+    "belowMin": 0,
+    "aboveMax": 121,
+    "negative": -1,
+    "decimal": 25.5,
+    "nonNumeric": "abc",
+    "empty": ""
+  },
+  "salary": {
+    "min": 1,
+    "max": 9999999,
+    "zero": 0,
+    "negative": -1000,
+    "aboveMax": 10000000,
+    "decimal": 75000.99,
+    "nonNumeric": "fifty thousand",
+    "empty": ""
+  },
+  "firstName": {
+    "singleChar": "A",
+    "veryLong": "Bartholomew-Konstantinopolous",
+    "withHyphen": "Mary-Jane",
+    "withNumbers": "J0hn",
+    "empty": "",
+    "whitespaceOnly": "   "
+  },
+  "lastName": {
+    "singleChar": "X",
+    "veryLong": "Von-Extraordinaire-Maximilliansberg",
+    "withHyphen": "Smith-Jones",
+    "withApostrophe": "O'Brien",
+    "empty": "",
+    "whitespaceOnly": "   "
+  }
+}

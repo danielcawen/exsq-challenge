@@ -1,0 +1,84 @@
+name: E2E
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: Browser to run tests in
+        default: chrome
+        required: false
+        type: choice
+        options:
+          - chrome
+          - firefox
+      viewport_width:
+        description: Viewport width (px)
+        default: "1280"
+        required: false
+      viewport_height:
+        description: Viewport height (px)
+        default: "720"
+        required: false
+
+jobs:
+  quality:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format check
+        run: npm run format:check
+
+  cypress:
+    name: Functional tests
+    runs-on: ubuntu-latest
+    needs: quality
+    env:
+      ENV_FILE: .env.example
+      CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+      CYPRESS_DEFAULT_COMMAND_TIMEOUT: "15000"
+      CYPRESS_PAGE_LOAD_TIMEOUT: "60000"
+      CYPRESS_VIDEO: "false"
+      CYPRESS_VIEWPORT_WIDTH: ${{ inputs.viewport_width || '1280' }}
+      CYPRESS_VIEWPORT_HEIGHT: ${{ inputs.viewport_height || '720' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Run functional suite
+        uses: cypress-io/github-action@v6
+        with:
+          browser: ${{ inputs.browser || 'chrome' }}
+
+      - name: Upload screenshots and videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-failure-media
+          path: |
+            cypress/screenshots
+            cypress/videos
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report
+          path: reports

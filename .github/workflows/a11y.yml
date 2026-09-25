@@ -1,0 +1,63 @@
+name: Accessibility
+
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: Browser to run tests in
+        default: chrome
+        required: false
+        type: choice
+        options:
+          - chrome
+          - firefox
+      viewport_width:
+        description: Viewport width (px)
+        default: "1280"
+        required: false
+      viewport_height:
+        description: Viewport height (px)
+        default: "720"
+        required: false
+
+jobs:
+  a11y:
+    name: Accessibility suite
+    runs-on: ubuntu-latest
+    env:
+      ENV_FILE: .env.example
+      CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+      CYPRESS_DEFAULT_COMMAND_TIMEOUT: "15000"
+      CYPRESS_PAGE_LOAD_TIMEOUT: "60000"
+      CYPRESS_VIDEO: "false"
+      CYPRESS_VIEWPORT_WIDTH: ${{ inputs.viewport_width }}
+      CYPRESS_VIEWPORT_HEIGHT: ${{ inputs.viewport_height }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Run accessibility suite
+        uses: cypress-io/github-action@v6
+        with:
+          browser: ${{ inputs.browser || 'chrome' }}
+          command: npm run test:a11y
+
+      - name: Upload screenshots and videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-failure-media
+          path: |
+            cypress/screenshots
+            cypress/videos
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-report
+          path: reports

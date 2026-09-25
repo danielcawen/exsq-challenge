@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "id": "missing_at",
+      "value": "userdomain.com",
+      "reason": "No @ symbol"
+    },
+    {
+      "id": "missing_domain",
+      "value": "user@",
+      "reason": "Nothing after @"
+    },
+    {
+      "id": "missing_local_part",
+      "value": "@domain.com",
+      "reason": "Nothing before @"
+    },
+    {
+      "id": "missing_tld",
+      "value": "user@domain",
+      "reason": "No dot in domain"
+    },
+    {
+      "id": "double_at",
+      "value": "user@@domain.com",
+      "reason": "Two @ symbols"
+    },
+    {
+      "id": "space_in_local",
+      "value": "user name@domain.com",
+      "reason": "Unquoted space in local part"
+    },
+    {
+      "id": "consecutive_dots",
+      "value": "user..name@domain.com",
+      "reason": "Consecutive dots in local part"
+    },
+    {
+      "id": "leading_dot",
+      "value": ".user@domain.com",
+      "reason": "Local part starts with a dot"
+    },
+    {
+      "id": "trailing_dot_local",
+      "value": "user.@domain.com",
+      "reason": "Local part ends with a dot"
+    },
+    {
+      "id": "empty_string",
+      "value": "",
+      "reason": "Empty value"
+    },
+    {
+      "id": "whitespace_only",
+      "value": "   ",
+      "reason": "Whitespace only"
+    }
+  ]
+}

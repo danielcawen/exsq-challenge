@@ -1,17 +1,24 @@
-// ***********************************************************
-// This example support/e2e.js is processed and
-// loaded automatically before your test files.
-//
-// This is a great place to put global configuration and
-// behavior that modifies Cypress.
-//
-// You can change the location of this file or turn off
-// automatically serving support files with the
-// 'supportFile' configuration option.
-//
-// You can read more here:
-// https://on.cypress.io/configuration
-// ***********************************************************
+import { faker } from "@faker-js/faker";
+import "cypress-axe";
+import "cypress-mochawesome-reporter/register";
+import "./commands";
 
-// Import commands.js using ES2015 syntax:
-import './commands'
+Cypress.on("uncaught:exception", (err) => {
+  if (err.message === "Script error.") return false;
+});
+
+beforeEach(() => {
+  cy.on("window:load", (win) => {
+    const style = win.document.createElement("style");
+    style.textContent = "#fixedban, footer { display: none !important; }";
+    win.document.head.appendChild(style);
+  });
+});
+
+// docs: https://fakerjs.dev/guide/
+const seed = (Cypress.config("env") || {}).FAKER_SEED ?? Math.floor(Math.random() * 2 ** 31);
+faker.seed(seed);
+
+console.log(
+  `[faker] seed: ${seed}  →  set CYPRESS_FAKER_SEED=${seed} in your env file to reproduce`
+);
