@@ -1,7 +1,7 @@
 # exsq-challenge
 
-![E2E](https://github.com/dcawen/exsq-challenge/actions/workflows/e2e.yml/badge.svg)
-![Accessibility](https://github.com/dcawen/exsq-challenge/actions/workflows/a11y.yml/badge.svg)
+[![E2E](https://github.com/danielcawen/exsq-challenge/actions/workflows/e2e.yml/badge.svg)](https://github.com/danielcawen/exsq-challenge/actions/workflows/e2e.yml)
+[![Accessibility](https://github.com/danielcawen/exsq-challenge/actions/workflows/a11y.yml/badge.svg)](https://github.com/danielcawen/exsq-challenge/actions/workflows/a11y.yml)
 
 Cypress end-to-end test suite for [DemoQA](https://demoqa.com). It covers the functional UI (Elements, Forms, Widgets, Alerts & Frames), REST API, accessibility (axe-core), and responsive breakpoints. The suite is wired to GitHub Actions: every push and pull request runs lint, format checks, and the functional suite; accessibility runs on demand via `workflow_dispatch`.
 
