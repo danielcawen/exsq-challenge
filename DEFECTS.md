@@ -32,6 +32,7 @@ Bugs found during the test run against `https://demoqa.com`.
 - **Priority: Medium** — broad breakage across the primary submission flow; demoqa not under our control
 
 **Evidence**
+
 - `evidence/screenshots/practice-form/` (6 screenshots)
 - `evidence/videos/practice-form.mp4`
 
@@ -48,6 +49,7 @@ Bugs found during the test run against `https://demoqa.com`.
 - **Priority: Low** — isolated failure, low-stakes page, not actionable on our side
 
 **Evidence**
+
 - `evidence/screenshots/text-box/01-whitespace-name-renders-empty-failed.png`
 - `evidence/videos/text-box.mp4`
 
@@ -64,6 +66,7 @@ Bugs found during the test run against `https://demoqa.com`.
 - **Priority: High** — selector fix is entirely within our control; zero coverage until resolved
 
 **Evidence**
+
 - `evidence/screenshots/select-menu/01-multi-select-input-not-found-failed.png`
 - `evidence/videos/select-menu.mp4`
 

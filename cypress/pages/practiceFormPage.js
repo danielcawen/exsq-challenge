@@ -79,9 +79,7 @@ export function fillDateOfBirth(date) {
   cy.get(dateOfBirthInput).click();
   cy.get(monthSelect).select(String(parsedDate.getMonth()));
   cy.get(yearSelect).select(String(parsedDate.getFullYear()));
-  cy.get(calendarMonth)
-    .contains(calendarDay, String(parsedDate.getDate()))
-    .click();
+  cy.get(calendarMonth).contains(calendarDay, String(parsedDate.getDate())).click();
 }
 
 export function fillSubjects(subjects) {
